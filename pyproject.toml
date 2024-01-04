@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "boun-appetito"
+version = "0.1.0"
+description = ""
+authors = ["Nahuel <nahuel.94.arrieta@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+djangorestframework = "^3.14.0"
+Django = "^4.2.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
