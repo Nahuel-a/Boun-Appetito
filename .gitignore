@@ -1,2 +1,6 @@
 venv
-poetry.lock
+BounAppetito/__pycache__
+accounts/__pycache__
+accounts/migrations
+orders/migrations
+orders/__pycache__
