@@ -37,3 +37,15 @@ class Pizza(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Send(models.Model):
+    order = models.ForeignKey(
+        Order, verbose_name=_("Order num"), on_delete=models.CASCADE
+    )
+    address = models.CharField(verbose_name=_("Address of user"), max_length=255)
+    number = models.IntegerField(verbose_name=_("Address number"))
+    description_extras = models.CharField(
+        verbose_name=_("Apartment number, between streets...")
+    )
+    price = models.FloatField(verbose_name=_("Price of send"), default=200)
