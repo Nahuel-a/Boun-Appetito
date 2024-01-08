@@ -12,3 +12,17 @@ class Order(models.Model):
     ##
     send = models.BooleanField(verbose_name=_("send/"), default=False)
     created_ad = models.DateField(auto_now=False, auto_now_add=True)
+
+
+class Pizza(models.Model):
+    order = models.ForeignKey(
+        Order, verbose_name=_("Order num"), on_delete=models.CASCADE
+    )
+    name = models.CharField(verbose_name=_("Name of pizza"), max_length=155)
+    description = models.CharField(
+        verbose_name=_("Description of pizza"), max_length=155
+    )
+    amount = models.IntegerField(verbose_name=_("Amount of pizzas"), default=0)
+    price = models.FloatField(verbose_name=_("Price of pizza"))
+    image = models.ImageField(verbose_name=_("Image of pizza"))
+    is_active = models.BooleanField(default=True)
