@@ -56,7 +56,7 @@ class Send(models.Model):
         related_name="send",
     )
     address = models.CharField(verbose_name=_("Address of user"), max_length=255)
-    number = models.IntegerField(verbose_name=_("Address number"))
+    number = models.IntegerField(max_length=10, verbose_name=_("Address number"))
     description_extras = models.CharField(
         verbose_name=_("Apartment number, between streets...")
     )
