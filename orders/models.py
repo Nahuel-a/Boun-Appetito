@@ -13,14 +13,14 @@ class Order(models.Model):
         User,
         verbose_name=_("User order"),
         on_delete=models.CASCADE,
-        related_name="orders",
+        related_name="user_order",
     )
     ##Verificar
-    price = models.FloatField("total price", null=False, blanck=False)
+    price = models.FloatField("total price", null=False)
     ##
     send = models.BooleanField(verbose_name=_("send/"), default=False)
     payment_method = models.IntegerField(
-        verbose_name=_("Payment method"), choise=PaymentMethod
+        verbose_name=_("Payment method"), choices=PaymentMethod.choices
     )
     created_ad = models.DateField(auto_now=False, auto_now_add=True)
 
@@ -30,9 +30,9 @@ class Pizza(models.Model):
         Order,
         verbose_name=_("Pizza order"),
         on_delete=models.CASCADE,
-        related_name="pizza",
+        related_name="pizza_order",
     )
-    name = models.CharField(verbose_name=_("Name of pizza"), max_length=155)
+    name = models.CharField(max_length=155, verbose_name=_("Name of pizza"))
     description = models.CharField(
         verbose_name=_("Description of pizza"), max_length=155
     )
@@ -53,11 +53,11 @@ class Send(models.Model):
         Order,
         verbose_name=_("Send order"),
         on_delete=models.CASCADE,
-        related_name="send",
+        related_name="send_order",
     )
-    address = models.CharField(verbose_name=_("Address of user"), max_length=255)
-    number = models.IntegerField(max_length=10, verbose_name=_("Address number"))
+    address = models.CharField(max_length=255, verbose_name=_("Address of user"))
+    number = models.IntegerField(verbose_name=_("Address number"))
     description_extras = models.CharField(
-        verbose_name=_("Apartment number, between streets...")
+        max_length=500, verbose_name=_("Apartment number, between streets...")
     )
     price = models.FloatField(verbose_name=_("Price of send"), default=200)
