@@ -10,7 +10,10 @@ class Order(models.Model):
         CARD = 2, gettext_noop("CARD")
 
     user = models.ForeignKey(
-        User, verbose_name=_("order num"), on_delete=models.CASCADE
+        User,
+        verbose_name=_("User order"),
+        on_delete=models.CASCADE,
+        related_name="orders",
     )
     ##Verificar
     price = models.FloatField("total price", null=False, blanck=False)
@@ -24,7 +27,10 @@ class Order(models.Model):
 
 class Pizza(models.Model):
     order = models.ForeignKey(
-        Order, verbose_name=_("Order num"), on_delete=models.CASCADE
+        Order,
+        verbose_name=_("Pizza order"),
+        on_delete=models.CASCADE,
+        related_name="pizza",
     )
     name = models.CharField(verbose_name=_("Name of pizza"), max_length=155)
     description = models.CharField(
@@ -38,10 +44,16 @@ class Pizza(models.Model):
     def __str__(self):
         return self.name
 
+    # def get_display_price(self):
+    #     return "{0:.2f}".format(self.price / 100)
+
 
 class Send(models.Model):
     order = models.ForeignKey(
-        Order, verbose_name=_("Order num"), on_delete=models.CASCADE
+        Order,
+        verbose_name=_("Send order"),
+        on_delete=models.CASCADE,
+        related_name="send",
     )
     address = models.CharField(verbose_name=_("Address of user"), max_length=255)
     number = models.IntegerField(verbose_name=_("Address number"))
