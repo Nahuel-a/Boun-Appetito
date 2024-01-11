@@ -78,8 +78,12 @@ WSGI_APPLICATION = "BounAppetito.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "bounappetito",
+        "USER": "root",
+        "PASSWORD": "root123",
+        "HOST": "localhost",
+        "PORT": 3306,
     }
 }
 
@@ -125,4 +129,4 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = "account.User"
+AUTH_USER_MODEL = "accounts.User"

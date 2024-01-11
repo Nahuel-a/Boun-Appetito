@@ -6,7 +6,10 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ("user", "price", "send", "payment_method", "created_ad")
-        read_only_fields = ("created_ad",)
+        read_only_fields = (
+            "user",
+            "created_ad",
+        )
 
 
 class PizzaSerializer(serializers.ModelSerializer):
@@ -16,12 +19,15 @@ class PizzaSerializer(serializers.ModelSerializer):
             "order",
             "name",
             "description",
-            "amout",
+            "amount",
             "price",
             "image",
             "is_active",
         )
-        read_only_fields = ("is_active",)
+        read_only_fields = (
+            "order",
+            "is_active",
+        )
 
 
 class SendSerializer(serializers.ModelSerializer):
